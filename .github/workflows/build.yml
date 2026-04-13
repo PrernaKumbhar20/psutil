@@ -51,7 +51,6 @@ jobs:
           python-version: "${{ matrix.python-version }}"
           architecture: ppc64le
 
-
       - name: Build wheels + run tests
         uses: pypa/cibuildwheel@v3.2.1
         env:
