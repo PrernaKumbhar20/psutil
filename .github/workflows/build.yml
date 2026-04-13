@@ -28,6 +28,7 @@ jobs:
       matrix:
         include:
           - { os: ubuntu-latest, arch: x86_64 }
+          - { os: self-hosted, arch: ppc64le }
           - { os: ubuntu-24.04-arm, arch: aarch64 }
           - { os: macos-15, arch: x86_64 }
           - { os: macos-15, arch: arm64 }
