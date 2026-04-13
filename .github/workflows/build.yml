@@ -38,7 +38,7 @@ jobs:
       - uses: actions/checkout@v5
 
       # Install Python 3.8 on macOS ARM64 for universal2 support, else 3.11
-      - if: ${{ matrix.arch != 'ppc64le' }} 
+      - if: ${{ matrix.arch != 'ppc64le' }}
         name: Install Python
         uses: actions/setup-python@v6
         with:
