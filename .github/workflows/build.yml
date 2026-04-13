@@ -44,12 +44,12 @@ jobs:
         with:
           python-version: ${{ runner.os == 'macOS' && runner.arch == 'ARM64' && '3.8' || '3.11' }}
 
-      - if: ${{ matrix.arch == 'ppc64le' }}
-        name: Set up Python (ppc64le)
+      - if: ${{ matrix.os == 'self-hosted' }}
+        name: Set up Python (self-hosted)
         uses: IBM/setup-python-pz@4ca38bfac8eac147e9c7aad9ab246f68655afb36
         with:
           python-version: "${{ matrix.python-version }}"
-          architecture: ppc64le
+          architecture: self-hosted
 
       - name: Build wheels + run tests
         uses: pypa/cibuildwheel@v3.2.1
