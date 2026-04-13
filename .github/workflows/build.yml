@@ -29,11 +29,6 @@ jobs:
         include:
           - { os: ubuntu-latest, arch: x86_64 }
           - { os: self-hosted, arch: ppc64le }
-          - { os: ubuntu-24.04-arm, arch: aarch64 }
-          - { os: macos-15, arch: x86_64 }
-          - { os: macos-15, arch: arm64 }
-          - { os: windows-2025, arch: AMD64 }
-          - { os: windows-11-arm, arch: ARM64 }
     steps:
       - uses: actions/checkout@v5
 
@@ -48,8 +43,8 @@ jobs:
         name: Set up Python (self-hosted)
         uses: IBM/setup-python-pz@4ca38bfac8eac147e9c7aad9ab246f68655afb36
         with:
-          python-version: "${{ matrix.python-version }}"
-          architecture: self-hosted
+          python-version: 3.11
+          architecture: ppc64le
 
       - name: Build wheels + run tests
         uses: pypa/cibuildwheel@v3.2.1
