@@ -38,12 +38,12 @@ jobs:
       - uses: actions/checkout@v5
 
       # Install Python 3.8 on macOS ARM64 for universal2 support, else 3.11
-      - if: ${{ matrix.os-version == '24.04-ppc64le' }}
-        name: Set up Python (ppc64le)
+      - if: ${{ matrix.os-version == 'self-hosted' }}
+        name: Set up Python (self-hosted)
         uses: IBM/setup-python-pz@4ca38bfac8eac147e9c7aad9ab246f68655afb36
         with:
           python-version: "${{ matrix.python-version }}"
-          architecture: ppc64le
+          architecture: self-hosted
 
       - name: Build wheels + run tests
         uses: pypa/cibuildwheel@v3.2.1
