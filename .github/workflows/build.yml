@@ -43,7 +43,7 @@ jobs:
         name: Set up Python (self-hosted)
         uses: IBM/setup-python-pz@4ca38bfac8eac147e9c7aad9ab246f68655afb36
         with:
-          python-version: 3.11
+          python-version: 3.13
           architecture: ppc64le
 
       - name: Build wheels + run tests
