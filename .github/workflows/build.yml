@@ -51,7 +51,7 @@ jobs:
           architecture: ppc64le
 
       - name: Build wheels + run tests
-        if: ${{ matrix.os == 'self-hosted'}}
+        if: ${{ matrix.os != 'self-hosted'}}
         uses: pypa/cibuildwheel@v3.2.1
         env:
           CIBW_ARCHS: "${{ matrix.arch }}"
