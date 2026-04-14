@@ -56,8 +56,14 @@ jobs:
         env:
           CIBW_ARCHS: "${{ matrix.arch }}"
           CIBW_ENABLE: "cpython-freethreading ${{ startsWith(github.ref, 'refs/tags/') && '' || 'cpython-prerelease' }}"
+
+      - name: Build wheels for ppc64le
+        if: ${{ matrix.os == 'self-hosted' }}
+        env:
           CIBW_PRERELEASE_PYTHONS: True
           CIBW_FREE_THREADED_SUPPORT: True
+          CIBW_ARCHS: "ppc64le"
+          CIBW_BUILD: "cp311-manylinux_ppc64le"
           CIBW_CONTAINER_ENGINE: podman
           CIBW_CONTAINER_PRIVILEGED: true
         run: |
