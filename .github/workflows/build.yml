@@ -54,7 +54,7 @@ jobs:
       - name: Build wheels + run tests
         uses: pypa/cibuildwheel@v3.2.1
         env:
-          CIBW_ARCHS: "${{ matrix.arch }}"
+          CIBW_ARCHS: "${{ matrix.os }}"
           CIBW_ENABLE: "cpython-freethreading ${{ startsWith(github.ref, 'refs/tags/') && '' || 'cpython-prerelease' }}"
       
       - name: Upload wheels
