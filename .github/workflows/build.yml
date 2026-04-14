@@ -43,7 +43,6 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: ${{ runner.os == 'macOS' && runner.arch == 'ARM64' && '3.8' || '3.11' }}
-      
       - if: ${{ matrix.os == 'self-hosted'}}
         name: Set up Python (self-hosted)
         uses: IBM/setup-python-pz@4ca38bfac8eac147e9c7aad9ab246f68655afb36
