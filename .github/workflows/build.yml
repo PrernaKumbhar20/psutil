@@ -50,6 +50,7 @@ jobs:
         with:
           python-version: 3.11
           architecture: ppc64le
+          
       - name: Build wheels + run tests
         if: ${{ matrix.os != 'self-hosted'}}
         uses: pypa/cibuildwheel@v3.2.1
