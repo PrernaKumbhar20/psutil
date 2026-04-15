@@ -53,12 +53,6 @@ jobs:
 
       - name: Build wheels for ppc64le
         if: ${{ matrix.os == 'self-hosted' }}
-        env:
-          CIBW_PRERELEASE_PYTHONS: True
-          CIBW_ARCHS: "ppc64le"
-          CIBW_BUILD: "cp311-manylinux_ppc64le"
-          CIBW_CONTAINER_ENGINE: podman
-          CIBW_CONTAINER_PRIVILEGED: true
         run: |
           sudo apt-get update
           sudo apt-get install -y python3.12 python3.12-dev python3.12-venv
