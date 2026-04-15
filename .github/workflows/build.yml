@@ -38,7 +38,8 @@ jobs:
       - uses: actions/checkout@v5
 
       # Install Python 3.8 on macOS ARM64 for universal2 support, else 3.11
-      - name: Install Python
+      - if: ${{ matrix.os != 'self-hosted' }}
+        name: Install Python
         uses: actions/setup-python@v6
         with:
           python-version: ${{ runner.os == 'macOS' && runner.arch == 'ARM64' && '3.8' || '3.11' }}
