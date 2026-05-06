@@ -38,27 +38,27 @@ jobs:
       - uses: actions/checkout@v5
 
       # Install Python 3.8 on macOS ARM64 for universal2 support, else 3.11
-      - if: ${{ matrix.os != 'self-hosted' }}
+      - if: ${{ matrix.arch != 'ppc64le' }}
         name: Install Python
         uses: actions/setup-python@v6
         with:
           python-version: ${{ runner.os == 'macOS' && runner.arch == 'ARM64' && '3.8' || '3.11' }}
-      - if: ${{ matrix.os == 'self-hosted' }}
-        name: Set up Python (self-hosted)
+      - if: ${{ matrix.arch == 'ppc64le' }}
+        name: Set up Python (ppc64le)
         uses: IBM/setup-python-pz@4ca38bfac8eac147e9c7aad9ab246f68655afb36
         with:
           python-version: 3.11
           architecture: ppc64le
 
       - name: Build wheels + run tests
-        if: ${{ matrix.os != 'self-hosted'}}
+        if: ${{ matrix.arch != 'ppc64le'}}
         uses: pypa/cibuildwheel@v3.2.1
         env:
           CIBW_ARCHS: "${{ matrix.arch }}"
           CIBW_ENABLE: "cpython-freethreading ${{ startsWith(github.ref, 'refs/tags/') && '' || 'cpython-prerelease' }}"
 
       - name: Build wheels for ppc64le
-        if: ${{ matrix.os == 'self-hosted' }}
+        if: ${{ matrix.arch == 'ppc64le' }}
         run: |
           python3 -m pip install cibuildwheel
           cibuildwheel
