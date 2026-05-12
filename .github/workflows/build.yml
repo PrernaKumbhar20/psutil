@@ -8,7 +8,6 @@
 # * https://github.com/actions/checkout
 # * https://github.com/actions/setup-python
 # * https://github.com/actions/upload-artifact
-
 on: [push, pull_request]
 name: build
 concurrency:
